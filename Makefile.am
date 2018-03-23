@@ -223,6 +223,8 @@ EXTRA_DIST += $(wildcard docs/*.rst)
 
 AM_DISTCHECK_CONFIGURE_FLAGS = "--without-systemdunitdir"
 
+EXTRA_DIST += debian/changelog debian/compat debian/control debian/copyright debian/rules debian/watch debian/source/format
+
 CLEANFILES = $(gdbus_installer_generated) \
 	     $(nodist_systemdunit_DATA) \
 	     $(nodist_dbussystem_DATA) \
