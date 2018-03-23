@@ -1,0 +1,5 @@
+rauc (2018-03-23-3a8473d2d397827bc75ce16572acecb6bf2b2782-1) unstable; urgency=low
+
+  * Initial debian packaging
+
+ -- Michael Heimpold <mhei@heimpold.de>  Fri, 23 Mar 2018 18:00:00 +0100
