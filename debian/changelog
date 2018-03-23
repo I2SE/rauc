@@ -1,0 +1,5 @@
+rauc (1.4.8-1) unstable; urgency=low
+
+  * Initial debian packaging
+
+ -- Michael Heimpold <mhei@heimpold.de>  Thu, 17 Sep 2020 15:05:00 +0200

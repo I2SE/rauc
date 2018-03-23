@@ -278,6 +278,8 @@ AM_DISTCHECK_CONFIGURE_FLAGS = \
     --with-dbusinterfacesdir=$$dc_install_base/$(dbusinterfacesdir) \
     --enable-gpt
 
+EXTRA_DIST += debian/changelog debian/compat debian/control debian/copyright debian/rules debian/watch debian/source/format
+
 CLEANFILES = $(gdbus_installer_generated) \
 	     $(nodist_systemdunit_DATA) \
 	     $(nodist_dbussystemservice_DATA) \
