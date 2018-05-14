@@ -9,8 +9,8 @@
 #include "utils.h"
 #include "network.h"
 
-/* Maximum downloadable bundle size (8MB) */
-#define BUNDLE_DL_MAX_SIZE 8*1024*1024
+/* Maximum downloadable bundle size (896MB) */
+#define BUNDLE_DL_MAX_SIZE 896*1024*1024
 
 GQuark
 r_bundle_error_quark(void)
