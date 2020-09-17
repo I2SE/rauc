@@ -11,6 +11,14 @@
 #include "context.h"
 #include "signature.h"
 
+/* Define for OpenSSL 1.0.x backwards compatiblity.
+ * We use newer get0 names to be clear about memory ownership and to not use
+ * API deprecated in OpenSSL 1.1.x */
+#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
+#define X509_get0_notAfter X509_get_notAfter
+#define X509_get0_notBefore X509_get_notBefore
+#endif
+
 GQuark r_signature_error_quark(void)
 {
 	return g_quark_from_static_string("r_signature_error_quark");
@@ -55,6 +63,11 @@ static int check_purpose_code_sign(const X509_PURPOSE *xp, const X509 *const_x, 
 
 gboolean signature_init(GError **error)
 {
+#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
+	OPENSSL_config(NULL);
+	OpenSSL_add_all_algorithms();
+	ERR_load_crypto_strings();
+#else
 	int ret, id;
 
 	g_return_val_if_fail(error == FALSE || *error == NULL, FALSE);
@@ -74,6 +87,7 @@ gboolean signature_init(GError **error)
 				(flags & ERR_TXT_STRING) ? data : ERR_error_string(err, NULL));
 		return FALSE;
 	}
+#endif
 
 	id = X509_PURPOSE_get_count() + 1;
 	if (X509_PURPOSE_get_by_id(id) >= 0) {
